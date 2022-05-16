@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react'
+import { BookmarkContext } from '../../context/BookmarkContext'
+import BookmarkItem from './components/BookmarkItem'
 
 const BookmarkList = () => {
-    return (
-        <div>
-            <h2>Liste</h2>
-        </div>
-    );
-};
+  const { bookmarks } = useContext(BookmarkContext)!
 
-export default BookmarkList;
+  const renderBookmarkList = () => {
+    if (!bookmarks || bookmarks.length === 0) {
+      return <i>Aucun bookmark</i>
+    }
+
+    return bookmarks.map((b) => <BookmarkItem bookmark={b} key={b.url}/>)
+  }
+
+  return (
+    <div>
+      <h2>Liste</h2>
+      {renderBookmarkList()}
+    </div>
+  )
+}
+
+export default BookmarkList
