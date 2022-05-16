@@ -1,0 +1,12 @@
+.App {
+    text-align: center;
+}
+
+.content {
+    text-align: start;
+    padding: 20px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-content: space-between;
+}
