@@ -6,11 +6,13 @@ const BookmarkList = () => {
   const { bookmarks } = useContext(BookmarkContext)!
 
   const renderBookmarkList = () => {
-    if (!bookmarks || bookmarks.length === 0) {
+    if (bookmarks.length === 0) {
       return <i>Aucun bookmark</i>
     }
 
-    return bookmarks.map((b) => <BookmarkItem bookmark={b} key={b.url}/>)
+    return bookmarks.map((b) => (
+      <BookmarkItem bookmark={b} key={b.url + b.addedDate.getTime()} />
+    ))
   }
 
   return (
